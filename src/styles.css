@@ -1,58 +1,277 @@
-/* Minimal styles for Trans Voyage Taxi homepage */
-:root{
-  --accent:#0b5cff;
-  --muted:#666;
-  --bg:#fff;
-  --container-width:1100px;
-}
-body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;margin:0;background:var(--bg);color:#111}
-.tv-container{max-width:var(--container-width);margin:0 auto;padding:20px}
-.tv-header{border-bottom:1px solid #eee;background:#fafafa}
-.tv-brand{display:flex;align-items:center;gap:12px}
-.tv-logo{height:64px;width:64px;object-fit:contain}
-.tv-tagline{margin:0;color:var(--muted)}
-.tv-cta{margin-left:auto}
-.tv-book{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer}
-.tv-services{padding:36px 0}
-.tv-services .lead{color:var(--muted);max-width:60ch}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
-.service-card{border:1px solid #eee;border-radius:8px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
-.service-card img{width:100%;height:160px;object-fit:cover}
-.service-card-body{padding:12px}
-.service-card h3{margin:0 0 8px}
-.differentiators{margin-top:22px}
-.differentiators ul{color:var(--muted);line-height:1.5}
-.tv-footer{border-top:1px solid #eee;padding:20px 0;margin-top:24px;background:#fafafa}
-.muted{color:var(--muted);margin:6px 0}
+/* Modern responsive styles for TVT client
+   - Mobile-first
+   - CSS variables for easy theming
+   - Accessible focus states and reduced-motion support
+   - Components: header, nav, buttons, cards, modal, footer
+*/
 
-@media (max-width:600px){
-  .tv-logo{height:48px;width:48px}
-  .tv-container{padding:12px}
+:root{
+  /* Color palette (adjustable) */
+  --bg: #0f1724; /* deep navy */
+  --card: #0f1724;
+  --surface: #0b1220;
+  --muted: #9aa4b2;
+  --text: #e6eef6;
+  --accent: #06b6d4; /* teal */
+  --accent-600: #0891b2;
+  --danger: #ff6b6b;
+  --glass: rgba(255,255,255,0.04);
+
+  /* Spacing & type */
+  --container-max: 1100px;
+  --gutter: 1rem;
+  --radius: 12px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --base-size: 16px;
 }
+
+/* Reset & base */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+html{font-size:100%;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background: linear-gradient(180deg,var(--bg), #07111a 120%);
+  color:var(--text);
+  line-height:1.45;
+  padding:0.5rem;
+}
+
+/* Utility: container */
+.container{
+  width:100%;
+  max-width:var(--container-max);
+  margin:0 auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
+
+/* Layout helpers */
+.row{display:flex;flex-wrap:wrap;gap:1rem}
+.col{flex:1 1 0}
+.center{display:flex;align-items:center;justify-content:center}
+
+/* Typography */
+h1,h2,h3,h4{margin:0 0 0.5rem 0;color:var(--text);font-weight:var(--fw-medium)}
+p{margin:0 0 1rem 0;color:var(--muted)}
+
+.lead{font-size:1.025rem;color:var(--text);opacity:0.95}
+
+/* Header & Nav */
+header.app-header{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius: calc(var(--radius) - 4px);
+  padding:0.6rem 0.75rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  backdrop-filter: blur(6px);
+}
+
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.6rem;font-weight:700}
+.brand img{height:36px;width:auto;border-radius:8px}
+.brand .title{font-size:1.05rem}
+
+/* Nav bar */
+.nav{display:flex;gap:0.75rem;align-items:center}
+.nav a{color:var(--muted);text-decoration:none;padding:0.45rem 0.6rem;border-radius:8px;font-weight:500}
+.nav a:hover{color:var(--text);background:var(--glass)}
+.nav a.active{color:var(--accent);background:linear-gradient(90deg, rgba(6,182,212,0.08), transparent)}
+
+/* Mobile nav toggle - keep hidden if not used */
+.nav-toggle{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;color:var(--text);padding:0.4rem;border-radius:8px}
+
+/* Hero / Top section */
+.hero{
+  padding:1rem 0.25rem;
+  display:flex;flex-direction:column;gap:1rem;align-items:flex-start
+}
+.hero .kicker{font-size:0.85rem;color:var(--accent);font-weight:600}
+.hero h1{font-size:1.6rem}
+.hero p{max-width:60ch}
+
+/* Cards (services, features) */
+.card-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:0.85rem}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:var(--radius);
+  padding:0.9rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.5);
+  border:1px solid rgba(255,255,255,0.03);
+}
+.card h3{font-size:1.05rem;margin-bottom:0.4rem}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:0.6rem;padding:0.55rem 0.9rem;border-radius:10px;border:0;cursor:pointer;font-weight:600;background:var(--accent);color: #042027;text-decoration:none
+}
+.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+.btn.ghost{background:transparent;color:var(--accent);border:0}
+.btn:focus{outline:3px solid rgba(6,182,212,0.18);outline-offset:2px}
+
+/* Modal (QuickBookModal) */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;z-index:60;
+}
+.modal{
+  width:clamp(280px, 92vw, 720px);
+  background: linear-gradient(180deg, rgba(8,15,22,0.95), rgba(6,12,18,0.98));
+  border-radius:14px;padding:1rem;border:1px solid rgba(255,255,255,0.04);
+  box-shadow:0 20px 40px rgba(2,6,23,0.7);
+}
+.modal .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+.modal .close-btn{background:transparent;border:0;color:var(--muted);padding:0.25rem;border-radius:8px}
+
+/* Forms */
+input[type="text"],input[type="email"],textarea,select{
+  width:100%;padding:0.6rem;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);font-size:0.95rem
+}
+label{display:block;margin-bottom:0.4rem;color:var(--muted);font-weight:500}
+
+/* Footer */
+footer.site-footer{margin-top:1.4rem;padding:1rem;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);color:var(--muted)}
+
+/* Small-screen first responsive rules */
+@media(min-width:680px){
+  .hero h1{font-size:2rem}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .header-inner{gap:1.5rem}
+}
+
+@media(min-width:1024px){
+  body{padding:1rem}
+  .hero{flex-direction:row;align-items:center;justify-content:space-between}
+  .card-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* Accessibility & preferences */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+}
+
+/* Small utility classes */
+.muted{color:var(--muted)}
+.uppercase{text-transform:uppercase;letter-spacing:0.08em;font-size:0.75rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Focus-visible for keyboard users */
+:focus{outline:none}
+:focus-visible{outline:3px solid rgba(6,182,212,0.18);outline-offset:3px}
+
+/* Small tweaks for existing components by filename conventions */
+.header, .footer, .nav, .brand, .card, .modal, .btn{transition:transform 150ms ease, box-shadow 150ms ease}
+.card:hover{transform:translateY(-6px)}
+.btn:active{transform:translateY(1px)}
+
+/* Compatibility layer: map existing component classnames to the modern styles above */
+
+/* Container */
+.tv-container{max-width:var(--container-max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);width:100%}
+
+/* Header */
+header.tv-header{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:calc(var(--radius)-4px);padding:0.6rem 0.75rem;box-shadow:0 6px 18px rgba(2,6,23,0.6);backdrop-filter:blur(6px)}
+.tv-brand, .tv-brand *{color:var(--text)}
+.tv-brand{display:flex;align-items:center;gap:0.6rem}
+.tv-logo{height:36px;width:auto;border-radius:8px}
+.tv-tagline{color:var(--muted);margin:0;font-size:0.9rem}
+.tv-site-title{font-weight:700}
 
 /* Nav */
-.tv-nav{background:#fff;border-bottom:1px solid #eee}
-.nav-inner{display:flex;align-items:center;gap:18px}
-.tv-nav .brand{display:flex;align-items:center;gap:12px}
-.nav-links{margin-left:auto;display:flex;gap:14px;align-items:center}
-.nav-links a{color:#333;text-decoration:none;padding:8px 10px;border-radius:6px}
-.nav-links a.active{background:var(--accent);color:#fff}
+.tv-nav{padding:0}
+.tv-nav .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-links{display:none;flex-direction:column;gap:0.6rem;margin-top:0.6rem}
+.nav-links a, .nav-links a:link, .nav-links a:visited{color:var(--muted);text-decoration:none;padding:0.45rem 0.6rem;border-radius:8px;font-weight:500}
+.nav-links a:hover{color:var(--text);background:var(--glass)}
+.nav-links a.active{color:var(--accent);background:linear-gradient(90deg, rgba(6,182,212,0.08), transparent)}
+.nav-links.open{display:flex}
+.nav-toggle{display:inline-flex}
 
-/* Hero */
-.hero{padding:36px 0;background:linear-gradient(180deg, #f7f9ff 0%, #fff 60%)}
-.hero-inner{display:flex;align-items:center;gap:20px}
-.hero-copy{flex:1}
-.hero-image{width:420px;height:260px;object-fit:cover;border-radius:8px;box-shadow:0 6px 18px rgba(11,92,255,0.08)}
-.hero-copy h2{font-size:28px;margin:0 0 6px}
-.hero-copy .lead{color:var(--muted);max-width:56ch}
-
-/* Booking form */
-.booking-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.booking-form label{display:flex;flex-direction:column}
-.booking-form input,.booking-form textarea{padding:8px;border:1px solid #ddd;border-radius:6px}
-.booking-form .checkbox{flex-direction:row;align-items:center}
-
-@media (max-width:900px){
-  .hero-inner{flex-direction:column}
-  .hero-image{width:100%;height:200px}
+@media(min-width:680px){
+  .nav-links{display:flex;flex-direction:row;margin:0}
+  .nav-toggle{display:none}
 }
+
+/* Buttons used across the app */
+.tv-book, a.tv-book{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0.8rem;border-radius:10px;border:0;cursor:pointer;background:var(--accent);color:#042027;font-weight:600;text-decoration:none}
+.tv-book.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+.tv-book:focus{outline:3px solid rgba(6,182,212,0.18);outline-offset:2px}
+
+/* QuickBook modal (component uses qb- prefixes) */
+.qb-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;z-index:60}
+.qb-modal{width:clamp(280px,92vw,720px);background:linear-gradient(180deg, rgba(8,15,22,0.95), rgba(6,12,18,0.98));border-radius:14px;padding:1rem;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 40px rgba(2,6,23,0.7)}
+.qb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+.qb-close{background:transparent;border:0;color:var(--muted);padding:0.25rem;border-radius:8px}
+.qb-form label{display:block;margin-bottom:0.6rem;color:var(--muted);font-weight:500}
+.qb-form input,.qb-form textarea{width:100%;padding:0.6rem;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+.qb-actions{display:flex;gap:0.5rem;justify-content:flex-end;margin-top:0.6rem}
+
+/* Services grid and cards */
+.services-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:0.85rem}
+.service-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.5)}
+.service-card img{width:100%;height:160px;object-fit:cover;display:block}
+.service-card-body{padding:0.9rem}
+
+@media(min-width:680px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:1024px){
+  .services-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* Footer */
+.tv-footer{margin-top:1.4rem;padding:1rem;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);color:var(--muted)}
+.tv-footer-inner{display:flex;flex-direction:column;gap:0.6rem}
+.footer-top h4{margin:0}
+.footer-contact{display:flex;gap:0.6rem;align-items:center}
+.footer-link{color:var(--text);text-decoration:none}
+.footer-address{font-size:0.95rem}
+.footer-bottom{display:flex;gap:0.6rem;align-items:center}
+
+/* Small helpers to ensure consistency */
+.muted{color:var(--muted)}
+.tv-logo{max-height:40px}
+
+/* Hero & landing */
+.hero{padding:1.25rem 0}
+.hero-inner{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.hero-left{flex:1}
+.hero-right{flex:0 0 100%;display:flex;justify-content:center}
+.hero-image{width:100%;max-width:420px;height:auto;object-fit:cover;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,0.5)}
+.hero-ctas{margin-top:0.75rem;display:flex;gap:0.6rem}
+
+@media(min-width:680px){
+  .hero-inner{flex-direction:row;align-items:center}
+  .hero-right{flex:0 0 420px}
+  .hero-image{height:260px;width:420px}
+}
+
+/* Feature boxes on Home */
+.feature-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem;margin-top:1rem}
+.feature-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:1rem;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.45);text-align:center}
+.feature-card h3{margin-bottom:0.5rem}
+.feature-card p{color:var(--muted);margin:0}
+
+@media(min-width:680px){
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:1024px){
+  .feature-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* Two-column helper used in About */
+.two-col{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.two-col .left{flex:1 1 380px}
+.two-col .right{flex:0 1 220px}
+
+/* Rates table helper used in Services */
+.rates-table{width:100%;max-width:720px;border-collapse:collapse;margin-top:8px}
+.rates-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.03)}
+
+/* small visual tweaks for anchors used in content */
+a.tv-book.inline{display:inline-block}
+
+/* End of stylesheet */

@@ -2,29 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- Use project logo as the favicon for brand consistency -->
+    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    <!-- theme-color used by some mobile browsers for the address bar color -->
+    <meta name="theme-color" content="#0b6efd" />
+  <meta name="description" content="Trans Voyage Taxi — dependable Denver taxi service: airport transfers, accessible rides, deliveries, and professional drivers." />
+  <meta name="author" content="Trans Voyage Taxi" />
+  <meta name="keywords" content="taxi Denver, airport transfer Denver, accessible transport Denver, wheelchair taxi, Trans Voyage Taxi, Denver taxi service" />
+  <meta name="robots" content="index, follow" />
+  <!-- canonical (uses PUBLIC_URL so it resolves in different deploy targets) -->
+  <link rel="canonical" href="%PUBLIC_URL%/" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Open Graph / Social preview -->
+    <meta property="og:title" content="Trans Voyage Taxi" />
+    <meta property="og:description" content="Reliable taxi service in Denver — airport transfers, accessible transport, city rides, and deliveries." />
+    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Trans Voyage Taxi" />
+    <meta name="twitter:description" content="Reliable taxi service in Denver — airport transfers, accessible transport, city rides, and deliveries." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/logo.png" />
+
+    <!-- Performance: preconnect to Google Fonts and load a clean UI font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Helpful dev/build comment retained -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+
+    <title>Trans Voyage Taxi</title>
+    
+    <!-- Structured data for SEO (Organization) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Trans Voyage Taxi",
+        "url": "%PUBLIC_URL%/",
+        "logo": "%PUBLIC_URL%/logo192.png",
+        "telephone": "+1-303-353-4482",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1450 South Havana Street Ste 712",
+          "addressLocality": "Aurora",
+          "addressRegion": "CO",
+          "postalCode": "80012",
+          "addressCountry": "US"
+        }
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

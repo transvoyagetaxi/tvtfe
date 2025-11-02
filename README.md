@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Trans Voyage Taxi — Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the client-side React app for the Trans Voyage Taxi website. It's a small, responsive single-page app built with Create React App and plain React.
 
-## Available Scripts
+The project includes a lightweight, mobile-first stylesheet at `src/styles.css` and several small components for the header, navigation, services listing, and a quick booking modal.
 
-In the project directory, you can run:
+## Quick start
 
-### `npm start`
+Prerequisites: Node.js (14+ recommended) and npm or yarn.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install dependencies and start the development server:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+cd client
+npm install
+npm start
+```
 
-### `npm test`
+Open http://localhost:3000 in your browser. The dev server supports hot reload.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Build for production:
 
-### `npm run build`
+```bash
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run tests (if any):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm test
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project structure
 
-### `npm run eject`
+Important folders and files inside `client/`:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `public/` — static files and `index.html`.
+- `src/` — application source code.
+  - `assets/` — images and media.
+  - `components/` — reusable UI components (Header, NavBar, QuickBookModal, Services, Footer).
+  - `pages/` — route pages (Home, ServicesPage, About).
+  - `styles.css` — global, mobile-first stylesheet (variables, layout helpers, components).
+  - `App.js` — application routes and top-level state (booking modal open/close).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Styling & theme
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- The app uses `src/styles.css` — a custom, mobile-first stylesheet that uses CSS variables for quick theme adjustments.
+- I added a compatibility layer to style existing class names (prefixed with `tv-` and `qb-`) used across components so the site receives a consistent look without editing all JSX.
+- Accessibility: focus-visible outlines are present and `prefers-reduced-motion` is respected.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If you want to tweak colors or spacing, update the variables at the top of `src/styles.css` (for example `--accent`, `--bg`, `--text`, `--muted`, `--radius`).
 
-## Learn More
+## Main components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `Header` / `NavBar` — site branding and navigation. Nav becomes a horizontal bar on larger screens and shows a toggle on small screens.
+- `QuickBookModal` — opens a small dialog and builds a `mailto:` booking email from form data.
+- `Services` — service cards (images + copy) and a rates table.
+- `Footer` — contact and address information.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Behavior notes
 
-### Code Splitting
+- Booking uses `mailto:` to open the user's email client with booking details; it does not submit to a server. This is by design for the current MVP.
+- The modal uses `role="dialog"` and `aria-modal="true"` for accessibility.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Next steps (suggestions)
 
-### Analyzing the Bundle Size
+- Move remaining inline styles into `src/styles.css` for consistency (I already moved a number of elements to classes).
+- Replace the `mailto:` flow with a backend booking endpoint if you want server-side booking storage and confirmations.
+- Add visual tests or Storybook stories for the UI components.
+- Add a theme toggle (dark/light) using the CSS variables.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+If you plan to contribute, please open issues or PRs and describe the change. Keep changes small and focused.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+No license file is included in this repository. Add a license (for example MIT) if you intend to open-source the project.

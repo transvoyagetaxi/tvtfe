@@ -1,29 +1,32 @@
 
+import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
+import QuickBookModal from './components/QuickBookModal'
 import About from './pages/About'
-import Booking from './pages/Booking'
-import Compliance from './pages/Compliance'
 import Home from './pages/Home'
 import ServicesPage from './pages/ServicesPage'
 import './styles.css'
 
 const App = () => {
+  const [bookingOpen, setBookingOpen] = useState(false)
+  const openBooking = () => setBookingOpen(true)
+  const closeBooking = () => setBookingOpen(false)
+
   return (
     <BrowserRouter>
       <div>
-        <NavBar />
+        <NavBar openBooking={openBooking} />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home openBooking={openBooking} />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/compliance" element={<Compliance />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </main>
         <Footer />
+        <QuickBookModal open={bookingOpen} onClose={closeBooking} />
       </div>
     </BrowserRouter>
   )
