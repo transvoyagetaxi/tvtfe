@@ -21,7 +21,7 @@ const NavBar = ({ openBooking }) => {
         <div className={`nav-links ${open ? 'open' : ''}`}>
           <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Home</NavLink>
           <NavLink to="/services" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Services</NavLink>
-          <a className="nav-book" onClick={() => { if (openBooking) openBooking(); close(); }}>Book</a>
+          <button type="button" className="nav-book" onClick={() => { if (openBooking) openBooking(); close(); }}>Book</button>
           <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>About</NavLink>
         </div>
 
