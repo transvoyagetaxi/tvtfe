@@ -52,8 +52,12 @@ const QuickBookModal = ({ open, onClose }) => {
     <div className="qb-overlay" role="dialog" aria-modal="true">
       <div className="qb-modal">
         <header className="qb-header">
-          <h3>Book A Ride</h3>
-          <button className="qb-close" onClick={onClose} aria-label="Close">✕</button>
+          <div>
+            <p className="kicker">Quick booking</p>
+            <h3>Book A Ride</h3>
+            <p className="muted small">We respond quickly to confirm your trip details.</p>
+          </div>
+          <button className="qb-close" onClick={onClose} aria-label="Close">×</button>
         </header>
 
         <form className="qb-form" onSubmit={handleSubmit}>
@@ -66,8 +70,8 @@ const QuickBookModal = ({ open, onClose }) => {
           <label>Notes<textarea name="notes" value={form.notes} onChange={handleChange} /></label>
 
           <div className="qb-actions">
-            <button type="button" className="tv-book" onClick={onClose}>Cancel</button>
-            <button type="submit" className="tv-book">Send Booking Email</button>
+            <button type="button" className="tv-book secondary" onClick={onClose}>Cancel</button>
+            <button type="submit" className="tv-book">Send booking email</button>
           </div>
         </form>
       </div>
