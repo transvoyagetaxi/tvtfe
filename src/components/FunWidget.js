@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 
 const FACTS = [
-  'Denver is nicknamed the "Mile High City" because its elevation is exactly one mile above sea level.',
-  'The first taxi company in Denver started service in the early 1900s — taxi travel has long been part of the city.',
-  'On average, a taxi trip in many U.S. cities covers about 5–8 miles — perfect for short errands and airport rides.',
+  'Denver is nicknamed the "Mile High City" because its elevation is one mile above sea level.',
+  'Taxi travel has been part of Denver since the early 1900s.',
+  'A typical city taxi trip is about 5-8 miles - perfect for errands and airport runs.',
   'Trans Voyage Taxi offers ADA-compliant vehicles for riders who need wheelchair-accessible transport.',
-  'Pro tip: booking ahead for airport trips reduces wait time and ensures on-time pickups during busy hours.',
-  'Denver has more than 200 days of sunshine per year — a great city for clear-sky rides!',
-  'Drivers often know helpful local shortcuts — a friendly question can save time during busy traffic.',
-  'Travel trivia: The world’s first electric taxi fleet ran in the early 1900s — EV taxi tech is older than you think!'
+  'Booking ahead for airport trips reduces wait time and keeps pickups on schedule.',
+  'Denver gets more than 200 days of sunshine each year - pack sunglasses.',
+  'Friendly drivers know local shortcuts that can save time when traffic is heavy.',
+  'Electric taxi pilots existed in the early 1900s, so EV taxis are not new.'
 ]
 
 const randomIndex = (except) => {
@@ -57,3 +57,4 @@ const FunWidget = () => {
 }
 
 export default FunWidget
+
