@@ -1,47 +1,57 @@
-
 import welcome from '../assets/welcome.png'
 
 const About = () => {
   return (
-    <div className="tv-container">
-      <div className="two-col">
-        <div className="left">
-          <h2>About Trans Voyage Taxi</h2>
-          <p className="lead">Trans Voyage Taxi is a Denver-based transportation provider focused on reliability, safety, and exceptional customer service. We grew from a non-emergency medical transport background and now provide accessible transport, airport transfers, city rides, and package delivery throughout the Denver metro area.</p>
+    <div className="tv-container about-page">
+      <div className="about-hero">
+        <div className="about-text">
+          <p className="kicker">About us</p>
+          <h2>Built from NEMT roots, focused on reliability</h2>
+          <p className="lead">Trans Voyage Taxi grew from non-emergency medical transport to a full-service taxi company serving Denver and DIA. We bring the same care, safety, and professionalism to every airport transfer, city ride, and delivery.</p>
+          <div className="meta-list">
+            <span className="pill muted">Denver based</span>
+            <span className="pill muted">ADA ready</span>
+            <span className="pill muted">24/7 dispatch</span>
+          </div>
         </div>
 
-        <div className="right">
-          <img src={welcome} alt="Welcome to Trans Voyage Taxi" style={{width:220,height:'auto',borderRadius:8,boxShadow:'0 8px 26px rgba(12,24,48,0.08)'}} />
+        <div className="about-visual">
+          <img src={welcome} alt="Welcome to Trans Voyage Taxi" className="about-image" />
         </div>
       </div>
 
-      <section style={{marginTop:22}}>
-        <h3>Our Story</h3>
+      <div className="panel soft about-panels">
+        <div className="story-block">
+          <h3>Our story</h3>
+          <p>We expanded beyond NEMT to better serve travelers, neighbors, and businesses across the Denver metro area. The same attention to safety and customer care now powers our full taxi service.</p>
+        </div>
 
-        <h4>Let's Grow...</h4>
-        <p>Trans Voyage's team set out to expand beyond non-emergency medical transportation to better serve a broader range of riders. By building on our NEMT experience, we brought the same attention to safety and customer satisfaction to a full taxi service for the Denver community.</p>
+        <div className="story-grid">
+          <div className="story-card">
+            <h4>Growth mindset</h4>
+            <p>We welcome healthy competition because it pushes us to raise the bar for service, punctuality, and comfort.</p>
+          </div>
+          <div className="story-card">
+            <h4>Community pride</h4>
+            <p>We are proud of our drivers and the loyalty of our riders. Their trust fuels our commitment to quality.</p>
+          </div>
+        </div>
 
-        <h4>Let's Compete...</h4>
-        <p>We welcome healthy competition — it drives improvement. Our team believes that competing on service and reliability benefits customers and pushes us to continually raise standards.</p>
+        <div className="story-block">
+          <h3>Mission</h3>
+          <p>Our mission is to get you the most for your fare: safe vehicles, professional drivers, timely pickups, and clear communication.</p>
+        </div>
 
-        <h4>Pride...</h4>
-        <p>We take pride in our independent contractors and business associates (our drivers) and in the loyalty of our customers. Their trust is the foundation of our service.</p>
-      </section>
-
-      <section style={{marginTop:18}}>
-        <h3>Mission</h3>
-        <p>"Our mission is to get you the most for your fare." We deliver safety, comfort, timeliness, and value on every trip.</p>
-      </section>
-
-      <section style={{marginTop:12}}>
-        <h3>Core Values</h3>
-        <ul>
-          <li>Safety & professionalism</li>
-          <li>Accessibility and inclusivity</li>
-          <li>Modern technology and convenience</li>
-          <li>Community-focused service</li>
-        </ul>
-      </section>
+        <div className="story-block">
+          <h3>Core values</h3>
+          <ul className="checklist">
+            <li>Safety and professionalism</li>
+            <li>Accessibility and inclusivity</li>
+            <li>Helpful technology and convenience</li>
+            <li>Community-focused service</li>
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }
