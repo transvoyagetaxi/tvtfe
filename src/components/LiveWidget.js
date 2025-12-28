@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-// Denver coordinates and timezone
 const LAT = 39.7392
 const LON = -104.9903
 const TZ = 'America/Denver'
@@ -79,6 +78,22 @@ const LiveWidget = () => {
     }
   }
 
+  const renderWeather = () => {
+    if (loading) return <div className="muted">Loading...</div>
+    if (error) return <div className="muted">{error}</div>
+    if (!weather) return null
+
+    const fahrenheit = Math.round((weather.temperature * 9) / 5 + 32)
+    const celsius = Math.round(weather.temperature)
+
+    return (
+      <div className="weather-row">
+        <div className="temp">{fahrenheit}°F</div>
+        <div className="code">{WEATHER_CODES[weather.weathercode] || 'Weather'} • {celsius}°C</div>
+      </div>
+    )
+  }
+
   return (
     <aside className="live-widget card" aria-live="polite">
       <div className="live-top">
@@ -87,21 +102,14 @@ const LiveWidget = () => {
           <div className="live-label">Denver local time</div>
         </div>
         <div className="live-weather">
-          {loading && <div className="muted">Loading…</div>}
-          {error && <div className="muted">{error}</div>}
-          {weather && (
-            <div className="weather-row">
-              {/* Open-Meteo returns temperature in °C. Convert to °F for US audience. */}
-              <div className="temp">{Math.round((weather.temperature * 9) / 5 + 32)}°F</div>
-              <div className="code">{WEATHER_CODES[weather.weathercode] || 'Weather'} • {Math.round(weather.temperature)}°C</div>
-            </div>
-          )}
+          {renderWeather()}
         </div>
       </div>
 
-      <div className="live-footer muted">Tip: Denver weather can change quickly — plan extra time for airport trips during storms.</div>
+      <div className="live-footer muted">Tip: Denver weather changes quickly - add a few extra minutes for DIA trips during storms.</div>
     </aside>
   )
 }
 
 export default LiveWidget
+
