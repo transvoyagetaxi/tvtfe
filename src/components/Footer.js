@@ -11,7 +11,7 @@ const Footer = () => {
           </div>
           <div className="footer-actions">
             <a href="tel:+13033534482" className="btn ghost">Call (303) 353-4482</a>
-            <a href="mailto:info@transvoyagetaxi.com" className="btn secondary">Email us</a>
+            <a href="mailto:bookings@transvoyagetaxi.com" className="btn secondary">Email us</a>
           </div>
         </div>
 

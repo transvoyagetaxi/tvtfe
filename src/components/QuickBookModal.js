@@ -43,7 +43,7 @@ const QuickBookModal = ({ open, onClose }) => {
       'Trans Voyage Taxi'
     ].join('\n')
 
-    const mailto = `mailto:info@transvoyagetaxi.com?subject=${encodeURIComponent('Booking request')}&body=${encodeURIComponent(body)}`
+    const mailto = `mailto:bookings@transvoyagetaxi.com?subject=${encodeURIComponent('Booking request')}&body=${encodeURIComponent(body)}`
     window.location.href = mailto
     onClose()
   }

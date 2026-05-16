@@ -25,7 +25,7 @@ const SERVICES = [
     blurb: 'Secure delivery for time-sensitive items anywhere in Denver and surrounding areas.',
     tag: 'On-demand',
     detail: 'Scheduled or same-day',
-    cta: <a className="text-link" href="mailto:info@transvoyagetaxi.com?subject=Delivery request">Request delivery</a>
+    cta: <a className="text-link" href="mailto:bookings@transvoyagetaxi.com?subject=Delivery request">Request delivery</a>
   },
   {
     title: 'Accessible & special needs transport',
@@ -77,7 +77,7 @@ const Services = () => {
               <h3>Clear pricing to and from DIA</h3>
               <p className="muted">Flat rate zones include the airport access fee. For other destinations, standard metered taxi rates apply.</p>
             </div>
-            <a className="btn secondary" href="mailto:info@transvoyagetaxi.com?subject=Rate quote request">Request quote</a>
+            <a className="btn secondary" href="mailto:bookings@transvoyagetaxi.com?subject=Rate quote request">Request quote</a>
           </div>
 
           <div className="rate-grid">
