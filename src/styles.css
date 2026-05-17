@@ -395,6 +395,8 @@ main{display:block;min-height:60vh;padding-top:0.75rem}
 .qb-overlay,.call-overlay{position:fixed;inset:0;background:rgba(5,10,20,0.72);display:flex;align-items:center;justify-content:center;z-index:60;padding:1rem}
 .qb-modal{
   width:clamp(320px, 92vw, 700px);
+  max-height:calc(100vh - 2rem);
+  overflow:auto;
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:var(--radius-lg);
@@ -417,6 +419,32 @@ main{display:block;min-height:60vh;padding-top:0.75rem}
 .checkbox{display:flex;align-items:center;gap:0.5rem;font-weight:600}
 .checkbox input{width:auto}
 .small{font-size:0.9rem}
+.datetime-grid{display:grid;grid-template-columns:1fr;gap:0.65rem}
+.qb-form input[type="date"],.qb-form input[type="time"]{color-scheme:dark}
+.time-slot-group{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:0.45rem;
+  margin:-0.15rem 0 0.65rem 0;
+}
+.time-slot{
+  min-height:42px;
+  border:1px solid var(--border-soft);
+  border-radius:10px;
+  background:rgba(255,255,255,0.04);
+  color:var(--text);
+  font-weight:700;
+  cursor:pointer;
+}
+.time-slot:hover,.time-slot.selected{
+  border-color:rgba(124,231,255,0.45);
+  background:rgba(124,231,255,0.12);
+  color:var(--accent);
+}
+@media(min-width:640px){
+  .datetime-grid{grid-template-columns:1fr 1fr}
+  .time-slot-group{grid-template-columns:repeat(5, minmax(0, 1fr))}
+}
 .call-modal{
   width:clamp(300px, 92vw, 460px);
   background:var(--panel);
