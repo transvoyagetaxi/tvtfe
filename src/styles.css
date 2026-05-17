@@ -392,7 +392,7 @@ main{display:block;min-height:60vh;padding-top:0.75rem}
 .live-footer{padding:0.9rem;border-top:1px solid var(--border-soft);font-size:0.95rem}
 
 /* Modal */
-.qb-overlay{position:fixed;inset:0;background:rgba(5,10,20,0.72);display:flex;align-items:center;justify-content:center;z-index:60;padding:1rem}
+.qb-overlay,.call-overlay{position:fixed;inset:0;background:rgba(5,10,20,0.72);display:flex;align-items:center;justify-content:center;z-index:60;padding:1rem}
 .qb-modal{
   width:clamp(320px, 92vw, 700px);
   background:var(--panel);
@@ -417,6 +417,29 @@ main{display:block;min-height:60vh;padding-top:0.75rem}
 .checkbox{display:flex;align-items:center;gap:0.5rem;font-weight:600}
 .checkbox input{width:auto}
 .small{font-size:0.9rem}
+.call-modal{
+  width:clamp(300px, 92vw, 460px);
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lift);
+  padding:1.1rem;
+}
+.call-phone{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:68px;
+  margin:0.9rem 0;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:rgba(255,255,255,0.04);
+  color:var(--text);
+  font-size:1.45rem;
+  font-weight:700;
+}
+.call-actions{display:flex;gap:0.6rem;justify-content:flex-end;flex-wrap:wrap;margin-top:0.8rem}
+.call-copy-status{min-height:1.4rem;margin-top:0.55rem;color:var(--accent);font-weight:700}
 
 /* Footer */
 .tv-footer{margin-top:1.5rem;padding:1.3rem 0}

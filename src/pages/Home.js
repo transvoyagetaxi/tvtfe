@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import hero from '../assets/downtown.jpeg'
+import CallButton from '../components/CallButton'
 import FunWidget from '../components/FunWidget'
 import LiveWidget from '../components/LiveWidget'
 
@@ -77,7 +78,7 @@ const Home = ({ openBooking }) => {
             </div>
             <div className="quick-card-actions">
               <button className="btn" onClick={handleBook}>Book now</button>
-              <a className="btn secondary" href="tel:+13033534482">(303) 353-4482</a>
+              <CallButton className="btn secondary" label="(303) 353-4482" />
             </div>
           </div>
         </div>
@@ -156,7 +157,7 @@ const Home = ({ openBooking }) => {
           </div>
           <div className="cta-actions">
             <button className="btn" onClick={handleBook}>Book a ride</button>
-            <a className="btn secondary" href="tel:+13033534482">Call (303) 353-4482</a>
+            <CallButton className="btn secondary" label="Call (303) 353-4482" />
           </div>
         </div>
       </section>

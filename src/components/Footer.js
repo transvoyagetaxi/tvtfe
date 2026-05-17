@@ -1,3 +1,5 @@
+import CallButton from './CallButton'
+
 const Footer = () => {
   const year = new Date().getFullYear()
   return (
@@ -10,7 +12,7 @@ const Footer = () => {
             <p className="muted">Serving Denver Metro and DIA around the clock.</p>
           </div>
           <div className="footer-actions">
-            <a href="tel:+13033534482" className="btn ghost">Call (303) 353-4482</a>
+            <CallButton className="btn ghost" label="Call (303) 353-4482" />
             <a href="mailto:bookings@transvoyagetaxi.com" className="btn secondary">Email us</a>
           </div>
         </div>

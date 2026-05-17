@@ -1,3 +1,5 @@
+import CallButton from './CallButton'
+
 const ZONE_RATES = [
   { zone: 'Boulder', fare: '$89.03' },
   { zone: 'Downtown Denver', fare: '$56.03' },
@@ -47,7 +49,7 @@ const Services = () => {
             <p className="muted">From DIA arrivals to neighborhood trips and deliveries, we keep Denver moving with professional drivers, clean vehicles, and clear pricing.</p>
           </div>
           <div className="section-actions">
-            <a className="btn" href="tel:+13033534482">Call dispatch</a>
+            <CallButton className="btn" label="Call dispatch" />
             <a className="btn secondary" href="/">Book online</a>
           </div>
         </div>
