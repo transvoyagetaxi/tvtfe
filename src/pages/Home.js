@@ -3,6 +3,178 @@ import hero from '../assets/downtown.jpeg'
 import CallButton from '../components/CallButton'
 import FunWidget from '../components/FunWidget'
 import LiveWidget from '../components/LiveWidget'
+import SEO from '../components/SEO'
+
+const SITE_URL = 'https://www.transvoyagetaxi.com'
+
+const LOCAL_BUSINESS_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'TaxiService'],
+      '@id': `${SITE_URL}/#business`,
+      name: 'Trans Voyage Taxi',
+      legalName: 'Trans Voyage Taxi',
+      description:
+        'Trans Voyage Taxi is a Denver-based taxi and transportation company providing 24/7 airport transfers to DIA, city rides, wheelchair-accessible transport, and package delivery across the Denver metro area.',
+      url: SITE_URL,
+      telephone: '+13033534482',
+      email: 'bookings@transvoyagetaxi.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/logo192.png`,
+        width: 192,
+        height: 192,
+      },
+      image: `${SITE_URL}/logo192.png`,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '1450 South Havana Street Ste 712',
+        addressLocality: 'Aurora',
+        addressRegion: 'CO',
+        postalCode: '80012',
+        addressCountry: 'US',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 39.7175,
+        longitude: -104.8348,
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '00:00',
+        closes: '23:59',
+      },
+      priceRange: '$$',
+      currenciesAccepted: 'USD',
+      paymentAccepted: 'Cash, Credit Card',
+      areaServed: [
+        { '@type': 'City', name: 'Denver', addressRegion: 'CO' },
+        { '@type': 'City', name: 'Aurora', addressRegion: 'CO' },
+        { '@type': 'City', name: 'Boulder', addressRegion: 'CO' },
+        { '@type': 'Place', name: 'Denver International Airport' },
+        { '@type': 'City', name: 'Lakewood', addressRegion: 'CO' },
+        { '@type': 'City', name: 'Englewood', addressRegion: 'CO' },
+        { '@type': 'City', name: 'Centennial', addressRegion: 'CO' },
+      ],
+      serviceArea: {
+        '@type': 'GeoCircle',
+        geoMidpoint: {
+          '@type': 'GeoCoordinates',
+          latitude: 39.7392,
+          longitude: -104.9903,
+        },
+        geoRadius: '80000',
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Trans Voyage Taxi Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'TaxiService',
+              name: 'DIA Airport Transfer — Downtown Denver',
+              description: 'Flat-rate taxi from Downtown Denver to Denver International Airport',
+            },
+            price: '56.03',
+            priceCurrency: 'USD',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'TaxiService',
+              name: 'DIA Airport Transfer — Boulder',
+              description: 'Flat-rate taxi from Boulder to Denver International Airport',
+            },
+            price: '89.03',
+            priceCurrency: 'USD',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'TaxiService',
+              name: 'Wheelchair-Accessible Taxi',
+              description: 'ADA-compliant taxi with NEMT-trained drivers for medical and daily transport',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Package Delivery Denver',
+              description: 'Same-day and scheduled delivery in the Denver metro area',
+            },
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Trans Voyage Taxi',
+      description: 'Denver taxi service — 24/7 airport transfers, accessible rides, city transport',
+      publisher: { '@id': `${SITE_URL}/#business` },
+    },
+  ],
+}
+
+const HOME_FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a taxi from Denver to DIA cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Trans Voyage Taxi offers flat-rate service from Downtown Denver to DIA for $56.03 (airport access fee included). Boulder to DIA is $89.03, Denver Tech Center to DIA is $62.03, and Tower Road to DIA is $29.03.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you offer wheelchair-accessible taxis in Denver?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Trans Voyage Taxi provides wheelchair-accessible vehicles with NEMT-trained drivers for medical visits and daily travel throughout the Denver metro area. Call (303) 353-4482 to confirm availability.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Trans Voyage Taxi available 24/7 for airport pickups?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, Trans Voyage Taxi operates 24 hours a day, 7 days a week for airport transfers to and from Denver International Airport (DIA). We monitor flight arrivals for real-time coordination.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where do taxis pick up passengers at Denver International Airport?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Taxi pickups at Denver International Airport's Jeppesen Terminal are located at Level 5, Island 1. Let us know your airline and arrival door for smooth curbside service.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I book a taxi in Denver?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Book a Trans Voyage Taxi ride online at transvoyagetaxi.com, by email at bookings@transvoyagetaxi.com, or by calling (303) 353-4482 anytime. Share your pickup address, date, time, and destination to get a fast confirmation.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Trans Voyage Taxi serve the Denver Tech Center?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Trans Voyage Taxi serves the Denver Tech Center and all surrounding neighborhoods with flat-rate airport transfers ($62.03 to DIA) and on-demand city rides.',
+      },
+    },
+  ],
+}
 
 const Home = ({ openBooking }) => {
   const handleBook = () => {
@@ -11,6 +183,13 @@ const Home = ({ openBooking }) => {
 
   return (
     <div>
+      <SEO
+        title="Denver Taxi Service | Trans Voyage Taxi — 24/7 DIA Airport Transfers"
+        description="Denver's reliable taxi service. Flat-rate airport transfers to DIA, wheelchair-accessible rides, city metro trips, and package delivery. Available 24/7 — call (303) 353-4482."
+        canonical="/"
+        schemas={[LOCAL_BUSINESS_SCHEMA, HOME_FAQ_SCHEMA]}
+      />
+
       <section className="hero hero-modern">
         <div className="tv-container hero-grid">
           <div className="hero-copy">

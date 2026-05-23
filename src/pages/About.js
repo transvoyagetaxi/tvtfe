@@ -1,8 +1,40 @@
 import welcome from '../assets/welcome.png'
+import SEO from '../components/SEO'
+
+const SITE_URL = 'https://www.transvoyagetaxi.com'
+
+const ABOUT_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE_URL}/about` },
+      ],
+    },
+    {
+      '@type': 'AboutPage',
+      '@id': `${SITE_URL}/about`,
+      url: `${SITE_URL}/about`,
+      name: "About Trans Voyage Taxi — Denver's Trusted Taxi Company",
+      description:
+        'Trans Voyage Taxi grew from non-emergency medical transport roots to a full-service Denver taxi company. We provide 24/7 airport transfers, ADA-accessible rides, and professional city transport across the Denver metro area.',
+      publisher: { '@id': `${SITE_URL}/#business` },
+      about: { '@id': `${SITE_URL}/#business` },
+    },
+  ],
+}
 
 const About = () => {
   return (
     <div className="tv-container about-page">
+      <SEO
+        title="About Trans Voyage Taxi — Denver's Trusted Taxi Company"
+        description="Trans Voyage Taxi is a Denver-based taxi company with NEMT roots offering ADA-accessible transport, 24/7 DIA airport transfers, and professional city rides across the Denver metro area."
+        canonical="/about"
+        schemas={[ABOUT_SCHEMA]}
+      />
       <div className="about-hero">
         <div className="about-text">
           <p className="kicker">About us</p>

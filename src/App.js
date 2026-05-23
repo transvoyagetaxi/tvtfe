@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
+import MobileBar from './components/MobileBar'
 import NavBar from './components/NavBar'
 import QuickBookModal from './components/QuickBookModal'
 import About from './pages/About'
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 import ServicesPage from './pages/ServicesPage'
 import './styles.css'
 
@@ -22,9 +24,11 @@ const App = () => {
             <Route path="/" element={<Home openBooking={openBooking} />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
+        <MobileBar openBooking={openBooking} />
         <QuickBookModal open={bookingOpen} onClose={closeBooking} />
       </div>
     </BrowserRouter>

@@ -2,79 +2,167 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!-- Use project logo as the favicon for brand consistency -->
-    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- theme-color used by some mobile browsers for the address bar color -->
     <meta name="theme-color" content="#0b6efd" />
-    <meta name="google-adsense-account" content="ca-pub-7831002909037560" />
-  <meta name="description" content="Trans Voyage Taxi — dependable Denver taxi service: airport transfers, accessible rides, deliveries, and professional drivers." />
-  <meta name="author" content="Trans Voyage Taxi" />
-  <meta name="keywords" content="taxi Denver, airport transfer Denver, accessible transport Denver, wheelchair taxi, Trans Voyage Taxi, Denver taxi service" />
-  <meta name="robots" content="index, follow" />
-  <!-- canonical (uses PUBLIC_URL so it resolves in different deploy targets) -->
-  <link rel="canonical" href="%PUBLIC_URL%/" />
+
+    <!-- Favicon & app icons -->
+    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!-- Open Graph / Social preview -->
-    <meta property="og:title" content="Trans Voyage Taxi" />
-    <meta property="og:description" content="Reliable taxi service in Denver — airport transfers, accessible transport, city rides, and deliveries." />
-    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <!-- Primary SEO -->
+    <title>Denver Taxi Service | Trans Voyage Taxi — 24/7 DIA Airport Transfers</title>
+    <meta name="description" content="Denver's reliable taxi service. Flat-rate airport transfers to DIA, wheelchair-accessible rides, city metro trips, and package delivery. Available 24/7 — call (303) 353-4482." />
+    <meta name="keywords" content="taxi Denver, Denver taxi service, DIA airport taxi, Denver airport taxi, airport transfer Denver, taxi to DIA, DIA taxi, wheelchair accessible taxi Denver, NEMT Denver, accessible transport Denver, Trans Voyage Taxi, Denver taxi rates, Denver metro taxi, Boulder DIA taxi, Denver Tech Center taxi" />
+    <meta name="author" content="Trans Voyage Taxi" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://www.transvoyagetaxi.com/" />
+
+    <!-- Google Adsense -->
+    <meta name="google-adsense-account" content="ca-pub-7831002909037560" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Trans Voyage Taxi" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://www.transvoyagetaxi.com/" />
+    <meta property="og:title" content="Denver Taxi Service | Trans Voyage Taxi — 24/7 DIA Airport Transfers" />
+    <meta property="og:description" content="Denver's reliable taxi service. Flat-rate airport transfers to DIA, wheelchair-accessible rides, city metro trips, and package delivery. Available 24/7 — call (303) 353-4482." />
+    <meta property="og:image" content="https://www.transvoyagetaxi.com/logo.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Trans Voyage Taxi — Denver taxi service logo" />
 
-    <!-- Twitter card -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Trans Voyage Taxi" />
-    <meta name="twitter:description" content="Reliable taxi service in Denver — airport transfers, accessible transport, city rides, and deliveries." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/logo.png" />
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Denver Taxi Service | Trans Voyage Taxi — 24/7 DIA Airport Transfers" />
+    <meta name="twitter:description" content="Denver's reliable taxi service. Flat-rate airport transfers to DIA, wheelchair-accessible rides, city metro trips, and package delivery. Available 24/7." />
+    <meta name="twitter:image" content="https://www.transvoyagetaxi.com/logo.png" />
+    <meta name="twitter:image:alt" content="Trans Voyage Taxi — Denver taxi service" />
 
-    <!-- Performance: preconnect to Google Fonts and load a clean UI font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Performance: preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Helpful dev/build comment retained -->
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-    -->
-
-    <title>Trans Voyage Taxi</title>
-    
-    <!-- Structured data for SEO (Organization) -->
+    <!-- Structured data: LocalBusiness + TaxiService (base fallback; pages inject their own via react-helmet-async) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Trans Voyage Taxi",
-        "url": "%PUBLIC_URL%/",
-        "logo": "%PUBLIC_URL%/logo192.png",
-        "telephone": "+1-303-353-4482",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "1450 South Havana Street Ste 712",
-          "addressLocality": "Aurora",
-          "addressRegion": "CO",
-          "postalCode": "80012",
-          "addressCountry": "US"
-        }
+        "@graph": [
+          {
+            "@type": ["LocalBusiness", "TaxiService"],
+            "@id": "https://www.transvoyagetaxi.com/#business",
+            "name": "Trans Voyage Taxi",
+            "legalName": "Trans Voyage Taxi",
+            "description": "Trans Voyage Taxi is a Denver-based taxi company providing 24/7 airport transfers to DIA, city rides, wheelchair-accessible transport, and package delivery across the Denver metro area.",
+            "url": "https://www.transvoyagetaxi.com",
+            "telephone": "+13033534482",
+            "email": "bookings@transvoyagetaxi.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.transvoyagetaxi.com/logo192.png",
+              "width": 192,
+              "height": 192
+            },
+            "image": "https://www.transvoyagetaxi.com/logo192.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "1450 South Havana Street Ste 712",
+              "addressLocality": "Aurora",
+              "addressRegion": "CO",
+              "postalCode": "80012",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 39.7175,
+              "longitude": -104.8348
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            },
+            "priceRange": "$$",
+            "currenciesAccepted": "USD",
+            "paymentAccepted": "Cash, Credit Card",
+            "areaServed": [
+              { "@type": "City", "name": "Denver", "addressRegion": "CO" },
+              { "@type": "City", "name": "Aurora", "addressRegion": "CO" },
+              { "@type": "City", "name": "Boulder", "addressRegion": "CO" },
+              { "@type": "Place", "name": "Denver International Airport" },
+              { "@type": "City", "name": "Lakewood", "addressRegion": "CO" },
+              { "@type": "City", "name": "Englewood", "addressRegion": "CO" },
+              { "@type": "City", "name": "Centennial", "addressRegion": "CO" }
+            ],
+            "serviceArea": {
+              "@type": "GeoCircle",
+              "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": 39.7392,
+                "longitude": -104.9903
+              },
+              "geoRadius": "80000"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Trans Voyage Taxi Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "TaxiService",
+                    "name": "DIA Airport Transfer — Downtown Denver",
+                    "description": "Flat-rate taxi from Downtown Denver to Denver International Airport"
+                  },
+                  "price": "56.03",
+                  "priceCurrency": "USD"
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "TaxiService",
+                    "name": "DIA Airport Transfer — Boulder",
+                    "description": "Flat-rate taxi from Boulder to Denver International Airport"
+                  },
+                  "price": "89.03",
+                  "priceCurrency": "USD"
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "TaxiService",
+                    "name": "Wheelchair-Accessible Taxi Denver",
+                    "description": "ADA-compliant taxi with NEMT-trained drivers for medical and daily transport"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Package Delivery Denver",
+                    "description": "Same-day and scheduled delivery in the Denver metro area"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.transvoyagetaxi.com/#website",
+            "url": "https://www.transvoyagetaxi.com",
+            "name": "Trans Voyage Taxi",
+            "description": "Denver taxi service — 24/7 airport transfers, accessible rides, city transport",
+            "publisher": { "@id": "https://www.transvoyagetaxi.com/#business" }
+          }
+        ]
       }
     </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
