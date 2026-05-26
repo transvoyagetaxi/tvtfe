@@ -3,20 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b6efd" />
+    <meta name="theme-color" content="#060c1b" />
+    <meta name="color-scheme" content="dark" />
 
     <!-- Favicon & app icons -->
     <link rel="icon" href="%PUBLIC_URL%/logo.png" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo512.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <!-- Primary SEO -->
-    <title>Denver Taxi Service | Trans Voyage Taxi — 24/7 DIA Airport Transfers</title>
-    <meta name="description" content="Denver's reliable taxi service. Flat-rate airport transfers to DIA, wheelchair-accessible rides, city metro trips, and package delivery. Available 24/7 — call (303) 353-4482." />
-    <meta name="keywords" content="taxi Denver, Denver taxi service, DIA airport taxi, Denver airport taxi, airport transfer Denver, taxi to DIA, DIA taxi, wheelchair accessible taxi Denver, NEMT Denver, accessible transport Denver, Trans Voyage Taxi, Denver taxi rates, Denver metro taxi, Boulder DIA taxi, Denver Tech Center taxi" />
+    <title>Denver Taxi Service | 24/7 DIA Airport Transfers — Trans Voyage Taxi</title>
+    <meta name="description" content="Denver's 24/7 taxi service — flat-rate DIA airport transfers (Downtown $72 · Boulder $115 · DTC $80 · Tower Rd $37), wheelchair-accessible NEMT rides, city metro trips. Call (303) 353-4482." />
+    <meta name="keywords" content="Denver taxi service, taxi to DIA, DIA taxi flat rate, Denver airport taxi, airport taxi Denver CO, taxi from downtown Denver to DIA, taxi from Boulder to airport, Denver Tech Center taxi to DIA, wheelchair accessible taxi Denver, NEMT Denver Colorado, non-emergency medical transport Denver, taxi Aurora CO, taxi Lakewood Colorado, 24 hour taxi Denver, cab service Denver, Denver taxi rates, taxi per mile Denver, Trans Voyage Taxi, Denver taxi company, airport transportation Denver, taxi near me Denver, Denver to DIA taxi cost, Yellow Cab Denver, Metro Taxi Denver, zTrip Denver, King Cab Denver, Union Taxi Denver, Groome Transportation Denver alternative, Goldenwest airport shuttle Denver, Denver cab companies, taxi vs Uber Denver, taxi vs Lyft Denver airport, best taxi company Denver Colorado, private airport taxi Denver, A Ride Now Aurora alternative, 007 airport limo Denver, Denver taxi comparison" />
     <meta name="author" content="Trans Voyage Taxi" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://www.transvoyagetaxi.com/" />
+
+    <!-- Geographic targeting -->
+    <meta name="geo.region" content="US-CO" />
+    <meta name="geo.placename" content="Denver, Colorado" />
+    <meta name="geo.position" content="39.7175;-104.8348" />
+    <meta name="ICBM" content="39.7175, -104.8348" />
 
     <!-- Google Adsense -->
     <meta name="google-adsense-account" content="ca-pub-7831002909037560" />
@@ -26,26 +33,28 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://www.transvoyagetaxi.com/" />
-    <meta property="og:title" content="Denver Taxi Service | Trans Voyage Taxi — 24/7 DIA Airport Transfers" />
-    <meta property="og:description" content="Denver's reliable taxi service. Flat-rate airport transfers to DIA, wheelchair-accessible rides, city metro trips, and package delivery. Available 24/7 — call (303) 353-4482." />
-    <meta property="og:image" content="https://www.transvoyagetaxi.com/logo.png" />
+    <meta property="og:title" content="Denver Taxi Service | 24/7 DIA Airport Transfers — Trans Voyage Taxi" />
+    <meta property="og:description" content="Denver's 24/7 taxi service — flat-rate DIA airport transfers (Downtown $72 · Boulder $115 · DTC $80 · Tower Rd $37), wheelchair-accessible NEMT rides, city metro trips. Call (303) 353-4482." />
+    <meta property="og:image" content="https://www.transvoyagetaxi.com/logo512.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta property="og:image:alt" content="Trans Voyage Taxi — Denver taxi service logo" />
 
     <!-- Twitter / X card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Denver Taxi Service | Trans Voyage Taxi — 24/7 DIA Airport Transfers" />
-    <meta name="twitter:description" content="Denver's reliable taxi service. Flat-rate airport transfers to DIA, wheelchair-accessible rides, city metro trips, and package delivery. Available 24/7." />
-    <meta name="twitter:image" content="https://www.transvoyagetaxi.com/logo.png" />
+    <meta name="twitter:title" content="Denver Taxi Service | 24/7 DIA Airport Transfers — Trans Voyage Taxi" />
+    <meta name="twitter:description" content="Flat-rate DIA airport transfers, wheelchair-accessible rides & 24/7 Denver taxi service. Call (303) 353-4482." />
+    <meta name="twitter:image" content="https://www.transvoyagetaxi.com/logo512.png" />
     <meta name="twitter:image:alt" content="Trans Voyage Taxi — Denver taxi service" />
 
-    <!-- Performance: preconnect to Google Fonts -->
+    <!-- Performance: preload Space Grotesk from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Structured data: LocalBusiness + TaxiService (base fallback; pages inject their own via react-helmet-async) -->
+    <!-- Base structured data: LocalBusiness + TaxiService
+         (each page overrides with its own richer version via react-helmet-async) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -55,17 +64,18 @@
             "@id": "https://www.transvoyagetaxi.com/#business",
             "name": "Trans Voyage Taxi",
             "legalName": "Trans Voyage Taxi",
-            "description": "Trans Voyage Taxi is a Denver-based taxi company providing 24/7 airport transfers to DIA, city rides, wheelchair-accessible transport, and package delivery across the Denver metro area.",
+            "alternateName": "Trans Voyage Taxi Denver",
+            "description": "Trans Voyage Taxi is a Denver-based taxi company providing 24/7 flat-rate airport transfers to DIA, city rides, wheelchair-accessible NEMT transport, and package delivery across the Denver metro area including Aurora, Boulder, Lakewood, Englewood, Centennial, Arvada, and Westminster.",
             "url": "https://www.transvoyagetaxi.com",
             "telephone": "+13033534482",
             "email": "bookings@transvoyagetaxi.com",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://www.transvoyagetaxi.com/logo192.png",
-              "width": 192,
-              "height": 192
+              "url": "https://www.transvoyagetaxi.com/logo512.png",
+              "width": 512,
+              "height": 512
             },
-            "image": "https://www.transvoyagetaxi.com/logo192.png",
+            "image": "https://www.transvoyagetaxi.com/logo512.png",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "1450 South Havana Street Ste 712",
@@ -79,6 +89,7 @@
               "latitude": 39.7175,
               "longitude": -104.8348
             },
+            "hasMap": "https://maps.google.com/?q=Trans+Voyage+Taxi+1450+South+Havana+Street+Suite+712+Aurora+CO+80012",
             "openingHoursSpecification": {
               "@type": "OpeningHoursSpecification",
               "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -87,15 +98,36 @@
             },
             "priceRange": "$$",
             "currenciesAccepted": "USD",
-            "paymentAccepted": "Cash, Credit Card",
+            "paymentAccepted": "Cash, Credit Card, Debit Card",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+13033534482",
+              "contactType": "reservations",
+              "areaServed": "Denver Metro Area, CO",
+              "availableLanguage": "English",
+              "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+              }
+            },
             "areaServed": [
-              { "@type": "City", "name": "Denver", "addressRegion": "CO" },
-              { "@type": "City", "name": "Aurora", "addressRegion": "CO" },
-              { "@type": "City", "name": "Boulder", "addressRegion": "CO" },
-              { "@type": "Place", "name": "Denver International Airport" },
-              { "@type": "City", "name": "Lakewood", "addressRegion": "CO" },
-              { "@type": "City", "name": "Englewood", "addressRegion": "CO" },
-              { "@type": "City", "name": "Centennial", "addressRegion": "CO" }
+              { "@type": "City", "name": "Denver", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Aurora", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Boulder", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Lakewood", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Englewood", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Centennial", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Arvada", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Westminster", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Thornton", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Littleton", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "City", "name": "Broomfield", "addressRegion": "CO", "addressCountry": "US" },
+              { "@type": "Place", "name": "Denver International Airport", "alternateName": ["DIA", "DEN"] },
+              { "@type": "Place", "name": "Denver Tech Center", "alternateName": "DTC" },
+              { "@type": "Place", "name": "Cherry Creek, Denver" },
+              { "@type": "Place", "name": "LoDo, Denver" }
             ],
             "serviceArea": {
               "@type": "GeoCircle",
@@ -106,45 +138,85 @@
               },
               "geoRadius": "80000"
             },
+            "knowsAbout": [
+              "Airport Transportation Denver",
+              "DIA Taxi Service",
+              "Wheelchair Accessible Transport Denver",
+              "NEMT Non-Emergency Medical Transport",
+              "Denver Taxi Service",
+              "Package Delivery Denver",
+              "Denver International Airport Transfers",
+              "Aurora Colorado Taxi Service",
+              "Boulder to DIA Transportation"
+            ],
+            "amenityFeature": [
+              { "@type": "LocationFeatureSpecification", "name": "Wheelchair Accessible Vehicles", "value": true },
+              { "@type": "LocationFeatureSpecification", "name": "Credit Card Accepted", "value": true },
+              { "@type": "LocationFeatureSpecification", "name": "24-Hour Service", "value": true },
+              { "@type": "LocationFeatureSpecification", "name": "NEMT Trained Drivers", "value": true },
+              { "@type": "LocationFeatureSpecification", "name": "Flight Tracking for Airport Pickups", "value": true },
+              { "@type": "LocationFeatureSpecification", "name": "Flat Rate Airport Pricing", "value": true }
+            ],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Trans Voyage Taxi Services",
               "itemListElement": [
                 {
                   "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "TaxiService",
-                    "name": "DIA Airport Transfer — Downtown Denver",
-                    "description": "Flat-rate taxi from Downtown Denver to Denver International Airport"
-                  },
-                  "price": "56.03",
-                  "priceCurrency": "USD"
+                  "name": "Downtown Denver to DIA — Flat Rate",
+                  "description": "Flat-rate taxi from Downtown Denver to Denver International Airport. Airport access fee included. Available 24/7.",
+                  "price": "72.04",
+                  "priceCurrency": "USD",
+                  "itemOffered": { "@type": "TaxiService", "name": "Downtown Denver to DIA Taxi" },
+                  "availability": "https://schema.org/InStock"
                 },
                 {
                   "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "TaxiService",
-                    "name": "DIA Airport Transfer — Boulder",
-                    "description": "Flat-rate taxi from Boulder to Denver International Airport"
-                  },
-                  "price": "89.03",
-                  "priceCurrency": "USD"
+                  "name": "Boulder to DIA — Flat Rate",
+                  "description": "Flat-rate taxi from Boulder to Denver International Airport. Airport access fee included.",
+                  "price": "115.04",
+                  "priceCurrency": "USD",
+                  "itemOffered": { "@type": "TaxiService", "name": "Boulder to DIA Taxi" },
+                  "availability": "https://schema.org/InStock"
                 },
                 {
                   "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "TaxiService",
-                    "name": "Wheelchair-Accessible Taxi Denver",
-                    "description": "ADA-compliant taxi with NEMT-trained drivers for medical and daily transport"
-                  }
+                  "name": "Denver Tech Center to DIA — Flat Rate",
+                  "description": "Flat-rate taxi from Denver Tech Center (DTC) to Denver International Airport.",
+                  "price": "80.04",
+                  "priceCurrency": "USD",
+                  "itemOffered": { "@type": "TaxiService", "name": "Denver Tech Center to DIA Taxi" },
+                  "availability": "https://schema.org/InStock"
                 },
                 {
                   "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Package Delivery Denver",
-                    "description": "Same-day and scheduled delivery in the Denver metro area"
-                  }
+                  "name": "Tower Road / Aurora to DIA — Flat Rate",
+                  "description": "Flat-rate taxi from Tower Road / Aurora area to Denver International Airport.",
+                  "price": "37.04",
+                  "priceCurrency": "USD",
+                  "itemOffered": { "@type": "TaxiService", "name": "Tower Road to DIA Taxi" },
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Wheelchair-Accessible NEMT Taxi Denver",
+                  "description": "ADA-compliant wheelchair-accessible taxi with NEMT-trained drivers for medical appointments and daily transport in Denver metro.",
+                  "itemOffered": { "@type": "TaxiService", "name": "Wheelchair Accessible Taxi Denver" },
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Denver Metro City Rides",
+                  "description": "Metered taxi rides across Denver metro. $3.50 base fare + $2.65/mile.",
+                  "itemOffered": { "@type": "TaxiService", "name": "Denver City Taxi" },
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Package Delivery Denver",
+                  "description": "Same-day and scheduled package delivery across the Denver metro area.",
+                  "itemOffered": { "@type": "Service", "name": "Denver Package Delivery" },
+                  "availability": "https://schema.org/InStock"
                 }
               ]
             }
@@ -154,15 +226,18 @@
             "@id": "https://www.transvoyagetaxi.com/#website",
             "url": "https://www.transvoyagetaxi.com",
             "name": "Trans Voyage Taxi",
-            "description": "Denver taxi service — 24/7 airport transfers, accessible rides, city transport",
-            "publisher": { "@id": "https://www.transvoyagetaxi.com/#business" }
+            "description": "Denver taxi service — 24/7 DIA airport transfers, wheelchair-accessible NEMT rides, city transport across Denver metro.",
+            "publisher": { "@id": "https://www.transvoyagetaxi.com/#business" },
+            "inLanguage": "en-US"
           }
         ]
       }
     </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      Trans Voyage Taxi — Denver taxi service available 24/7. Call (303) 353-4482 to book airport transfers to DIA, wheelchair-accessible rides, and city transport. JavaScript is required to use this site.
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

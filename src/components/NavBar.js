@@ -21,8 +21,9 @@ const NavBar = ({ openBooking }) => {
         <div className={`nav-links ${open ? 'open' : ''}`}>
           <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Home</NavLink>
           <NavLink to="/services" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>Services</NavLink>
-          <button type="button" className="nav-book" onClick={() => { if (openBooking) openBooking(); close(); }}>Book</button>
+          <button type="button" className="nav-book" onClick={() => { if (openBooking) openBooking(); close(); }}>Book a ride</button>
           <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''} onClick={close}>About</NavLink>
+          <NavLink to="/drive" className={({ isActive }) => isActive ? 'active nav-drive' : 'nav-drive'} onClick={close}>Drive with us</NavLink>
         </div>
 
         <button className={`nav-toggle ${open ? 'open' : ''}`} onClick={() => setOpen(o => !o)} aria-label="Toggle menu">

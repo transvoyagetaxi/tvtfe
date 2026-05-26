@@ -10,19 +10,12 @@ const CallButton = ({ label = `Call ${PHONE_DISPLAY}`, className = 'btn secondar
 
   useEffect(() => {
     if (!open) return undefined
-
-    const handleKeyDown = event => {
-      if (event.key === 'Escape') setOpen(false)
-    }
-
+    const handleKeyDown = e => { if (e.key === 'Escape') setOpen(false) }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [open])
 
-  const openModal = () => {
-    setCopied(false)
-    setOpen(true)
-  }
+  const openModal = () => { setCopied(false); setOpen(true) }
 
   const copyNumber = async () => {
     try {
@@ -40,15 +33,21 @@ const CallButton = ({ label = `Call ${PHONE_DISPLAY}`, className = 'btn secondar
       </button>
 
       {open && (
-        <div className="call-overlay" role="dialog" aria-modal="true" aria-labelledby="call-modal-title">
-          <div className="call-modal">
+        <div
+          className="call-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="call-modal-title"
+          onClick={() => setOpen(false)}
+        >
+          <div className="call-modal" onClick={e => e.stopPropagation()}>
             <header className="qb-header">
               <div>
                 <p className="kicker">Call dispatch</p>
                 <h3 id="call-modal-title">Trans Voyage Taxi</h3>
                 <p className="muted small">Call us anytime for booking help and ride confirmations.</p>
               </div>
-              <button className="qb-close" onClick={() => setOpen(false)} aria-label="Close">x</button>
+              <button className="qb-close" onClick={() => setOpen(false)} aria-label="Close">×</button>
             </header>
 
             <div className="call-phone">{PHONE_DISPLAY}</div>

@@ -1,45 +1,13 @@
 import { useEffect, useState } from 'react'
 
-const LAT = 39.7392
-const LON = -104.9903
 const TZ = 'America/Denver'
-
-const WEATHER_CODES = {
-  0: 'Clear sky',
-  1: 'Mainly clear',
-  2: 'Partly cloudy',
-  3: 'Overcast',
-  45: 'Fog',
-  48: 'Depositing rime fog',
-  51: 'Light drizzle',
-  53: 'Moderate drizzle',
-  55: 'Dense drizzle',
-  56: 'Light freezing drizzle',
-  57: 'Dense freezing drizzle',
-  61: 'Slight rain',
-  63: 'Moderate rain',
-  65: 'Heavy rain',
-  66: 'Light freezing rain',
-  67: 'Heavy freezing rain',
-  71: 'Slight snow fall',
-  73: 'Moderate snow fall',
-  75: 'Heavy snow fall',
-  77: 'Snow grains',
-  80: 'Slight rain showers',
-  81: 'Moderate rain showers',
-  82: 'Violent rain showers',
-  85: 'Slight snow showers',
-  86: 'Heavy snow showers',
-  95: 'Thunderstorm',
-  96: 'Thunderstorm with slight hail',
-  99: 'Thunderstorm with heavy hail'
-}
 
 const LiveWidget = () => {
   const [time, setTime] = useState(() => new Date())
   const [weather, setWeather] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [retryKey, setRetryKey] = useState(0)
 
   useEffect(() => {
     const tId = setInterval(() => setTime(new Date()), 1000)
@@ -49,12 +17,14 @@ const LiveWidget = () => {
   useEffect(() => {
     let mounted = true
     setLoading(true)
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current_weather=true&timezone=${encodeURIComponent(TZ)}`)
+    setError(null)
+    fetch('https://wttr.in/Denver,CO?format=j1')
       .then(r => r.json())
       .then(data => {
         if (!mounted) return
-        if (data && data.current_weather) {
-          setWeather(data.current_weather)
+        const cond = data?.current_condition?.[0]
+        if (cond) {
+          setWeather({ tempF: cond.temp_F, tempC: cond.temp_C, desc: cond.weatherDesc?.[0]?.value || 'Weather' })
           setError(null)
         } else {
           setError('No weather data')
@@ -65,31 +35,31 @@ const LiveWidget = () => {
         setError('Unable to fetch weather')
         console.error(err)
       })
-      .finally(() => mounted && setLoading(false))
-
+      .finally(() => { if (mounted) setLoading(false) })
     return () => { mounted = false }
-  }, [])
+  }, [retryKey])
 
   const fmtTime = () => {
     try {
       return time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true, timeZone: TZ })
-    } catch (e) {
+    } catch {
       return time.toLocaleTimeString()
     }
   }
 
   const renderWeather = () => {
     if (loading) return <div className="muted">Loading...</div>
-    if (error) return <div className="muted">{error}</div>
+    if (error) return (
+      <div className="weather-error">
+        <div className="muted" style={{ fontSize: '0.85rem' }}>{error}</div>
+        <button className="btn ghost" style={{ padding: '0.25rem 0.6rem', fontSize: '0.82rem', marginTop: '0.3rem' }} onClick={() => setRetryKey(k => k + 1)}>Retry</button>
+      </div>
+    )
     if (!weather) return null
-
-    const fahrenheit = Math.round((weather.temperature * 9) / 5 + 32)
-    const celsius = Math.round(weather.temperature)
-
     return (
       <div className="weather-row">
-        <div className="temp">{fahrenheit}°F</div>
-        <div className="code">{WEATHER_CODES[weather.weathercode] || 'Weather'} • {celsius}°C</div>
+        <div className="temp">{weather.tempF}°F</div>
+        <div className="code">{weather.desc} • {weather.tempC}°C</div>
       </div>
     )
   }
@@ -105,8 +75,7 @@ const LiveWidget = () => {
           {renderWeather()}
         </div>
       </div>
-
-      <div className="live-footer muted">Tip: Denver weather changes quickly - add a few extra minutes for DIA trips during storms.</div>
+      <div className="live-footer muted">Tip: Denver weather changes quickly — add extra time for DIA trips during storms.</div>
     </aside>
   )
 }

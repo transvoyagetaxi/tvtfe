@@ -1,17 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const TIME_SLOTS = [
-  '00:00',
-  '06:00',
-  '08:00',
-  '10:00',
-  '12:00',
-  '14:00',
-  '16:00',
-  '18:00',
-  '20:00',
-  '22:00'
-]
+const TIME_SLOTS = ['00:00','06:00','08:00','10:00','12:00','14:00','16:00','18:00','20:00','22:00']
 
 const formatTime = value => {
   if (!value) return ''
@@ -35,17 +24,17 @@ const today = () => {
   return date.toISOString().slice(0, 10)
 }
 
+const EMPTY_FORM = {
+  name: '', phone: '', pickup: '', pickupDate: '',
+  pickupTime: '', dropoff: '', wheelchair: false, notes: ''
+}
+
 const QuickBookModal = ({ open, onClose }) => {
-  const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    pickup: '',
-    pickupDate: '',
-    pickupTime: '',
-    dropoff: '',
-    wheelchair: false,
-    notes: ''
-  })
+  const [form, setForm] = useState(EMPTY_FORM)
+
+  useEffect(() => {
+    if (open) setForm(EMPTY_FORM)
+  }, [open])
 
   if (!open) return null
 
@@ -54,19 +43,14 @@ const QuickBookModal = ({ open, onClose }) => {
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
   }
 
-  const setPickupTime = pickupTime => {
-    setForm(prev => ({ ...prev, pickupTime }))
-  }
+  const setPickupTime = pickupTime => setForm(prev => ({ ...prev, pickupTime }))
 
   const handleSubmit = e => {
     e.preventDefault()
     const pickupDateTime = formatPickupDateTime(form.pickupDate, form.pickupTime)
-
     const body = [
-      'Hello,',
-      '',
-      'Thank you for choosing Trans Voyage Taxi.',
-      '',
+      'Hello,', '',
+      'Thank you for choosing Trans Voyage Taxi.', '',
       'Booking request:',
       '--------------------------------------------------',
       `Name: ${form.name}`,
@@ -75,13 +59,9 @@ const QuickBookModal = ({ open, onClose }) => {
       `Pickup date & time: ${pickupDateTime}`,
       `Dropoff address: ${form.dropoff}`,
       `Wheelchair required (yes/no): ${form.wheelchair ? 'yes' : 'no'}`,
-      'Notes:',
-      form.notes || 'N/A',
-      '',
+      'Notes:', form.notes || 'N/A', '',
       'Please note: Your trip is not confirmed until a Trans Voyage Taxi representative calls you to confirm.',
-      '',
-      'Thank you,',
-      'Trans Voyage Taxi'
+      '', 'Thank you,', 'Trans Voyage Taxi'
     ].join('\n')
 
     const mailto = `mailto:bookings@transvoyagetaxi.com?subject=${encodeURIComponent('Booking request')}&body=${encodeURIComponent(body)}`
@@ -90,15 +70,15 @@ const QuickBookModal = ({ open, onClose }) => {
   }
 
   return (
-    <div className="qb-overlay" role="dialog" aria-modal="true">
-      <div className="qb-modal">
+    <div className="qb-overlay" role="dialog" aria-modal="true" onClick={onClose}>
+      <div className="qb-modal" onClick={e => e.stopPropagation()}>
         <header className="qb-header">
           <div>
             <p className="kicker">Quick booking</p>
             <h3>Book A Ride</h3>
             <p className="muted small">We respond quickly to confirm your trip details.</p>
           </div>
-          <button className="qb-close" onClick={onClose} aria-label="Close">x</button>
+          <button className="qb-close" onClick={onClose} aria-label="Close">×</button>
         </header>
 
         <form className="qb-form" onSubmit={handleSubmit}>
@@ -113,8 +93,8 @@ const QuickBookModal = ({ open, onClose }) => {
             {TIME_SLOTS.map(slot => (
               <button
                 type="button"
-                className={`time-slot ${form.pickupTime === slot ? 'selected' : ''}`}
                 key={slot}
+                className={`time-slot ${form.pickupTime === slot ? 'selected' : ''}`}
                 onClick={() => setPickupTime(slot)}
               >
                 {formatTime(slot)}
@@ -122,7 +102,10 @@ const QuickBookModal = ({ open, onClose }) => {
             ))}
           </div>
           <label>Dropoff address<input name="dropoff" value={form.dropoff} onChange={handleChange} required /></label>
-          <label className="checkbox"><input type="checkbox" name="wheelchair" checked={form.wheelchair} onChange={handleChange} /> Requires wheelchair-accessible vehicle</label>
+          <label className="checkbox">
+            <input type="checkbox" name="wheelchair" checked={form.wheelchair} onChange={handleChange} />
+            Requires wheelchair-accessible vehicle
+          </label>
           <label>Notes<textarea name="notes" value={form.notes} onChange={handleChange} /></label>
 
           <div className="qb-actions">

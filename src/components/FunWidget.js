@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const FACTS = [
   'Denver is nicknamed the "Mile High City" because its elevation is one mile above sea level.',
@@ -11,7 +11,7 @@ const FACTS = [
   'Electric taxi pilots existed in the early 1900s, so EV taxis are not new.'
 ]
 
-const randomIndex = (except) => {
+const randomIndex = except => {
   let i = Math.floor(Math.random() * FACTS.length)
   if (except != null && FACTS.length > 1) {
     while (i === except) i = Math.floor(Math.random() * FACTS.length)
@@ -22,25 +22,24 @@ const randomIndex = (except) => {
 const FunWidget = () => {
   const [index, setIndex] = useState(() => Math.floor(Math.random() * FACTS.length))
   const [fade, setFade] = useState(false)
+  const fadeTimer = useRef(null)
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setFade(true)
-      setTimeout(() => {
-        setIndex(i => randomIndex(i))
-        setFade(false)
-      }, 300)
-    }, 7000)
-    return () => clearInterval(id)
-  }, [])
-
-  const next = () => {
+  const advance = (delay = 200) => {
+    if (fadeTimer.current) clearTimeout(fadeTimer.current)
     setFade(true)
-    setTimeout(() => {
+    fadeTimer.current = setTimeout(() => {
       setIndex(i => randomIndex(i))
       setFade(false)
-    }, 200)
+    }, delay)
   }
+
+  useEffect(() => {
+    const id = setInterval(() => advance(300), 7000)
+    return () => {
+      clearInterval(id)
+      if (fadeTimer.current) clearTimeout(fadeTimer.current)
+    }
+  }, [])
 
   return (
     <aside className="fun-widget card" aria-live="polite">
@@ -48,9 +47,8 @@ const FunWidget = () => {
         <div className="fact-emoji">🚕</div>
         <div className="fact-text">{FACTS[index]}</div>
       </div>
-
       <div className="fun-controls">
-        <button className="btn ghost" onClick={next} aria-label="Next fun fact">Next fact</button>
+        <button className="btn ghost" onClick={() => advance(200)} aria-label="Next fun fact">Next fact</button>
       </div>
     </aside>
   )
