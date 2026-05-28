@@ -2,6 +2,5 @@
 User-agent: *
 Allow: /
 Disallow: /static/
-Disallow: /*.json$
 
 Sitemap: https://www.transvoyagetaxi.com/sitemap.xml

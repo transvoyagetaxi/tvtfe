@@ -17,7 +17,7 @@ const Footer = ({ openBooking, openDrive }) => {
                 <div className="footer-brand-tagline">Transportation You Can Trust</div>
               </div>
             </div>
-            <p className="footer-brand-desc muted">Denver's 24/7 taxi service — flat-rate DIA airport transfers, wheelchair-accessible NEMT transport, and city rides across the Denver metro area.</p>
+            <p className="footer-brand-desc muted">Denver's 24/7 taxi service — flat-rate taxi to DIA, wheelchair-accessible NEMT transport, and city rides across the Denver metro area.</p>
             <div className="footer-badge-row">
               <span className="pill muted">Licensed &amp; Insured</span>
               <span className="pill muted">PUC Approved</span>
@@ -42,11 +42,11 @@ const Footer = ({ openBooking, openDrive }) => {
 
           <div className="footer-col">
             <div className="footer-col-title">Services</div>
-            <ul className="footer-nav-list footer-services-list">
-              <li>DIA Airport Transfers</li>
-              <li>City &amp; Metro Rides</li>
-              <li>Wheelchair-Accessible (NEMT)</li>
-              <li>Same-Day Package Delivery</li>
+            <ul className="footer-nav-list">
+              <li><Link to="/airport-taxi">Taxi to DIA</Link></li>
+              <li><Link to="/wheelchair-accessible-taxi">Wheelchair Accessible &amp; NEMT</Link></li>
+              <li><Link to="/services">City &amp; Metro Rides</Link></li>
+              <li><Link to="/services">Same-Day Package Delivery</Link></li>
             </ul>
             <div className="footer-drive-cta">
               <div className="footer-col-title" style={{ marginTop: '1.5rem' }}>Drivers</div>

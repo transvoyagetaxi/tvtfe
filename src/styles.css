@@ -929,6 +929,37 @@ input, textarea, select, button { font-family: inherit }
   body { padding-bottom: calc(82px + env(safe-area-inset-bottom)) }
 }
 
+/* === FAQ accordion === */
+.faq-list { display: grid; gap: 0.55rem; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0 1.1rem;
+  transition: border-color 200ms var(--ease);
+}
+.faq-item[open] { border-color: var(--border-accent); }
+.faq-item summary {
+  padding: 1rem 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 300;
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+  transition: transform 200ms var(--ease);
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding: 0 0 1rem; margin: 0; }
+
 /* === 404 page === */
 .notfound-page {
   display: flex; align-items: center; justify-content: center;

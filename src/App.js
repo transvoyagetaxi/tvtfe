@@ -7,10 +7,12 @@ import MobileBar from './components/MobileBar'
 import NavBar from './components/NavBar'
 import QuickBookModal from './components/QuickBookModal'
 import About from './pages/About'
+import AirportTaxiPage from './pages/AirportTaxiPage'
 import DrivePage from './pages/DrivePage'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import ServicesPage from './pages/ServicesPage'
+import WheelchairTaxiPage from './pages/WheelchairTaxiPage'
 import './styles.css'
 
 const App = () => {
@@ -33,6 +35,8 @@ const App = () => {
             <Route path="/" element={<Home openBooking={openBooking} />} />
             <Route path="/services" element={<ServicesPage openBooking={openBooking} openDelivery={openDelivery} />} />
             <Route path="/about" element={<About />} />
+            <Route path="/airport-taxi" element={<AirportTaxiPage openBooking={openBooking} />} />
+            <Route path="/wheelchair-accessible-taxi" element={<WheelchairTaxiPage openBooking={openBooking} />} />
             <Route path="/drive" element={<DrivePage openDrive={openDrive} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

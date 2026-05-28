@@ -492,8 +492,8 @@ const Home = ({ openBooking }) => {
   return (
     <div>
       <SEO
-        title="Denver Taxi Service | 24/7 DIA Airport Transfers — Trans Voyage Taxi"
-        description="Denver's 24/7 taxi service — flat-rate DIA airport transfers (Downtown $72 · Boulder $115 · DTC $80 · Tower Rd $37), wheelchair-accessible NEMT rides, city metro trips. Call (303) 353-4482."
+        title="Denver Taxi Service | 24/7 Taxi to DIA — Trans Voyage Taxi"
+        description="Denver's 24/7 taxi service — flat-rate taxi to DIA (Downtown $72 · Boulder $115 · DTC $80 · Aurora $37), wheelchair-accessible NEMT rides, city trips. Call (303) 353-4482."
         canonical="/"
         keywords="Denver taxi service, taxi to DIA, DIA taxi flat rate, Denver airport taxi, airport taxi Denver CO, taxi from downtown Denver to DIA, taxi from Boulder to airport, Denver Tech Center taxi to DIA, wheelchair accessible taxi Denver, NEMT Denver Colorado, non-emergency medical transport Denver, taxi Aurora CO, taxi Lakewood Colorado, 24 hour taxi Denver, cab service Denver, Trans Voyage Taxi, Yellow Cab Denver, Metro Taxi Denver, zTrip Denver, King Cab Denver, Union Taxi Denver, Groome Transportation Denver alternative, Goldenwest airport shuttle alternative, Denver cab companies, taxi alternative to Uber Denver, taxi instead of Lyft Denver, best taxi company Denver Colorado, A Ride Now Aurora alternative, 007 airport limo Denver alternative, Denver taxi comparison"
         schemas={[LOCAL_BUSINESS_SCHEMA, HOME_FAQ_SCHEMA]}
@@ -503,8 +503,8 @@ const Home = ({ openBooking }) => {
         <div className="tv-container hero-grid">
           <div className="hero-copy">
             <div className="pill">Denver Metro · Aurora · DIA Transfers</div>
-            <h1>Denver taxi service — flat-rate DIA airport transfers and city rides.</h1>
-            <p className="lead">Flat-rate trips to DIA from $37, ADA-accessible vehicles with NEMT-trained drivers, and 24/7 dispatch. Book online in seconds or call us anytime.</p>
+            <h1>Denver taxi service — flat-rate taxi to DIA and city rides.</h1>
+            <p className="lead">Flat-rate taxi to DIA from $37, ADA-accessible vehicles with NEMT-trained drivers, and 24/7 dispatch. Book online in seconds or call us anytime.</p>
 
             <div className="hero-actions">
               <button className="btn" onClick={handleBook}>Book a Ride</button>
